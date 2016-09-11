@@ -54,12 +54,24 @@
 
 
 <div class="form-group">
-  <label for="purchaseno" class="control-label col-sm-2">UPC</label>
+  <label for="purchaseno" class="control-label col-sm-2">Parent UPC</label>
   <div class="col-sm-10">
     <input type="text" class="form-control" id="upc" name="upc" placeholder="Enter UPC">
     
   </div>
 </div>
+
+
+
+<div class="form-group">
+  <label for="purchaseno" class="control-label col-sm-2">Child UPC</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" id="upc" name="childupc" placeholder="Enter Child UPC">
+    
+  </div>
+</div>
+
+
 
 
 
@@ -80,27 +92,19 @@
 </div>
 
 
-
-
-
-
-
-
+<div class="form-group">
+  <label for="purchaseno" class="control-label col-sm-2">Child Cost</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" id="child_cost" name="child_cost" placeholder="Child Cost">
+   </div>
+</div>
 
 
 <div class="form-group">
-  <label for="purchaseno" class="control-label col-sm-2">Status</label>
+  <label for="purchaseno" class="control-label col-sm-2">Consume Per day</label>
   <div class="col-sm-10">
-    <select class="selectpicker" data-show-subtext="true" data-live-search="true" name=status>
-      <option value=0>Pending</option>
-      <option value=1>Complete</option>
-      <option value=2>Processing</option>
-      <option value=3>Cancelled</option>
-      <option value=4>Active</option>
-      <option value=5>InActive</option>
-
-    <select>
-  </div>
+    <input type="text" class="form-control" id="consume_per_day" name="consume_per_day" placeholder="Consume per day">
+   </div>
 </div>
 
 

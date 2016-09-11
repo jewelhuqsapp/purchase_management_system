@@ -47,15 +47,18 @@ else if ($action == "save")
 	else
 	{
 
-	$book                 = R:: dispense("product");
-	$book->vendorid       = REQUEST("vendor");
-	$book->description    = REQUEST("description");
-	$book->catagoryid     = REQUEST("catagoryid");
-	$book->itemno         = REQUEST("itemno");
-	$book->upc            = REQUEST("upc");
-	$book->case_cost      = REQUEST("case_cost");
-	$book->unit_per_case  = REQUEST("unit_per_case");
-	$book->status         = 1;
+	$book                   = R:: dispense("product");
+	$book->vendorid         = REQUEST("vendor");
+	$book->description      = REQUEST("description");
+	$book->catagoryid       = REQUEST("catagoryid");
+	$book->itemno           = REQUEST("itemno");
+	$book->upc              = REQUEST("upc");
+	$book->case_cost        = REQUEST("case_cost");
+	$book->unit_per_case    = REQUEST("unit_per_case");
+	$book->child_cost       = REQUEST("child_cost");
+	$book->consume_per_day  = REQUEST("consume_per_case");
+
+	$book->status           = 1;
 	
 	/****START FILE UPLOAD ***************/
 	

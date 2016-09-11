@@ -267,8 +267,9 @@ elseif($action == "save_vendor")
  $v_phone        = REQUEST("v_phone");
  $v_email        = REQUEST("v_email");
  $v_address      = REQUEST("v_address");
+ $v_account_no   = REQUEST("v_account_no");
  
- R::exec("Insert Into vendor  SET v_name=:v_name,v_phone=:v_phone,v_email=:v_email,v_address=:v_address",array(":v_name"=>$v_name,":v_phone"=>$v_phone,":v_email"=>$v_email,":v_address"=>$v_address));
+ R::exec("Insert Into vendor  SET v_account_no=:v_account_no, v_name=:v_name,v_phone=:v_phone,v_email=:v_email,v_address=:v_address",array(":v_name"=>$v_name,":v_phone"=>$v_phone,":v_email"=>$v_email,":v_address"=>$v_address,":v_account_no"=>$v_account_no));
  echo json_encode(array('success'=>true,'msg'=>'Successfully Vendor  inserted.'));
 }
 
@@ -279,9 +280,10 @@ elseif($action == "update_vendor")
 	 $v_phone        = REQUEST("v_phone");
 	 $v_email        = REQUEST("v_email");
 	 $v_address      = REQUEST("v_address");
- 
-	R::exec("Update vendor  SET v_name=:v_name,v_phone=:v_phone,v_email=:v_email,v_address=:v_address WHERE id=:id",array(":v_name"=>$v_name,":v_phone"=>$v_phone,":v_email"=>$v_email,":v_address"=>$v_address,":id"=>$id));
-	echo json_encode(array('success'=>true,'msg'=>'Successfully user Updated'));
+	  $v_account_no   = REQUEST("v_account_no");
+
+	R::exec("Update vendor  SET  v_account_no=:v_account_no,v_name=:v_name,v_phone=:v_phone,v_email=:v_email,v_address=:v_address WHERE v_id=:id",array(":v_account_no"=>$v_account_no,":v_name"=>$v_name,":v_phone"=>$v_phone,":v_email"=>$v_email,":v_address"=>$v_address,":id"=>$id));
+	echo json_encode(array('success'=>true,'msg'=>"Successfully user Updated"));
 }
 
 /****STORE ****************/

@@ -27,6 +27,8 @@ include "db/db_config.php";
 				<th field="v_phone" width="50">Phone</th>
 				<th field="v_email" width="50">Email</th>
 				<th field="v_address" width="50">Address</th>
+				<th field="v_account_no" width="50">Account No</th>
+
 			</tr>
 		</thead>
 	</table>
@@ -58,6 +60,12 @@ include "db/db_config.php";
 				<input name="v_address" class="easyui-textbox" required="">
 			</div>
 		
+	<div class="fitem">
+				<label> Account No:</label>
+				<input name="v_account_no" class="easyui-textbox" required="">
+			</div>
+		
+
 
 		</form>
 	</div>

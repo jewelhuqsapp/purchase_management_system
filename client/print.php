@@ -33,8 +33,130 @@ if($action =="send_email")
 
 elseif($action == "confirm_send_email")
 {
+	$TEXT="";
 	
+		$vendors   = R::getAll("SELECT *from poitem where order_id=:po_id",array(":po_id"=>$po_id));
+	$order     = R::getRow("select * from po where id=$po_id");
+	$store     = R::getRow("select *from store where id=$order[store_id]");
+	$email     = $store["store_email"];
+	$message   = $order['message'];
+
+	
+	$TEXT.='<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php
+$title=isset($title)?$title:"";?>
+  <title><?php echo($title);?></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+
+body {
+  background: url(dashboard.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+
+</style>
+  
+
+
+
+</head>
+<body><body>
+
+    <div class="container">
+
+      ';
+$TEXT.="<b>Order ID :</b> #$po_id<br>";
+$TEXT.="<b>Request By :</b> $order[requested_by_name]";
+$TEXT.=("<br>From Store : $store[store_name] ");
+$TEXT.=("<br>Phone      : $store[store_phone]");
+$TEXT.=("<br>address    : $store[store_address] ");
+
+
+
+$TEXT.="<hr/>";
+$TEXT.="<div class=\"alert alert-success\"><b>SPEICAL MESSAGE</b>: $message;</div>
+
+	
+
+<div class=\"container\">
+
+
+ <div class=\"table-responsive\">
+
+                
+  <table class=\"table\" id=\"example\" class=\"display\">
+<thead>
+    <tr>
+    <th>Item No</th>
+	<th>Item Description</th>
+    <th>Quantity</th>
+    <th>Unit Per case</th>
+   </tr>
+";
+
+foreach($vendors as $po_item)
+{
+	
+$TEXT.=("
+ <tr>
+     <td>$po_item[itemno]</td>
+
+    <td>$po_item[description]</td>
+    <td>$po_item[quantity]</td>
+	<td>$po_item[vendor_name]</td>
+	<td>$po_item[catagory_name]</td>
+
+    ");
+
+
+$TEXT.=("</tr>");
+   
+
+ 
+}
+$TEXT.="</TABLE>";
+include "tpl/header.php";
+/****SEND EMAIL**********/
+$to = REQUEST("email");
+$cc_email = R::getRow("select *from settings");
+$subject = "Purchase order from $store[store_name] and  OrderID :#$po_id";
+$headers = "From: no-reply@etylerpaperwork.com" . "\r\n" .
+"CC: $cc_email[cc_email]";
+if(mail($to,$subject,$TEXT,$headers))
+{
+	print("<h1>Succesfully Email Sent!!!!</h1>");
+}
+else
+{
+		print("<h1>Email isn't Sent!!!!</h1>");
+
+}
+/*****SEND EMAIL*************/
+
+
+
+
+}
+
 
 
 

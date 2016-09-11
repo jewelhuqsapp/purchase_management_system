@@ -12,15 +12,12 @@
 <div id='message'></div>
 <form method="post" action="checkout.php">
 <div class="table-responsive">          
-  <table class="table" >
+      <table class="demo cell-border dataTable" id="example" >
     <thead>
       <tr>
-      
-       
-        <th>Name</th>
+       <th>Product Name</th>
         <th>Quantity</th>
-        <th>Add</th>
-   
+       <th>Action</th>
         
       </tr>
     </thead>
@@ -35,14 +32,19 @@ foreach($vendors as  $val)
 
 ?>
       <tr>
-      <td> <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="../<?php print($val['image']);?>" style="width: 72px; height: 72px;"> </a>
+      <td>
+       <div class="media">
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="../<?php print($val['image']);?>" style="width: 40px; height: 40px;"> </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#"><?php echo $val["description"];?></a></h4>
+                              <span><b><?php echo $val["description"];?></b></span><br>
                                 <span>Unit Per case: </span><span class="text-success"><strong><?php echo $val["unit_per_case"];?></strong></span>
                             </div>
-                        </div></td>
-  
+                        </div>
+
+
+                      </td>
+
+
 <td style='width: 170px;'>
  <div class="input-group">
           <span class="input-group-btn">
@@ -62,6 +64,7 @@ foreach($vendors as  $val)
 	
 </div>
 </td>
+
 <td>
 
 <input style="height:25px; font-size:20px;" type=checkbox name="checkbox[]" value="<?php echo $val['id'];?>">
@@ -72,17 +75,17 @@ foreach($vendors as  $val)
 <?php
 }
 ?>
-
 <tr>
-<td colspan=2>
-            <button type="submit" class="btn btn-success">
+  <td>  <button type="submit" class="btn btn-success">
                             Add To Cart<span class="glyphicon glyphicon-play"></span>
-                        </button>
-						</td>
-
-						</tr>
-    </tbody>
+                        </button></td>
+  <td>&nbsp;</td>
+  <td>     &nbsp;</td>
+</tr>
   </table>
+
+
+
   <input type=hidden name=action value="add_product">
  
  </form>

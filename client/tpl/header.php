@@ -333,11 +333,11 @@ function windowopen(url) {
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="dashboard.php">Home</a></li>
-              <li class="active"><a href="pending.php">Pending</a></li>
+              <li class=""><a href="pending.php">Pending</a></li>
 			  
               <li><a href="checkout.php">CART</a></li>
-			  <li><a href="po.php">PO List</a></li>
-			 <li><a href="logut.php">Logout</a></li>
+			  <li><a href="po.php">Old PO List</a></li>
+			 <li><a href="logout.php">Logout</a></li>
 
             </ul>
            

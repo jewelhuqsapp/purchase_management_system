@@ -1,9 +1,6 @@
 
 <div class="table-responsive">      
 
-<p align=center>
-<a href="?action=create" class="btn btn-info" role="button">Create Purchase Order</a>
-</p>
 <?php
 if(isset($message))
 {

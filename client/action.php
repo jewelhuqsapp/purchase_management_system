@@ -73,7 +73,7 @@ $message  = $message1.$message2;
 		$a->user_id           = 5555;
 		$a->order_id          = 555;
 		R::store($a);*/
-		header("location:po.php");	
+		header("location:pending.php");	
 
 }
  
