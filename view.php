@@ -13,6 +13,10 @@ if($action =="")
 	$vendors = R::getAll("SELECT *from poitem where order_id=:po_id",array(":po_id"=>$po_id));
 	$messages  = R::getRow("select message from po where id=$po_id");
 	$message   = $messages['message'];
+
+	$order     = R::getRow("select * from po where id=$po_id");
+	$store     = R::getRow("select *from store where id=$order[store_id]");
+	
 	include "tpl/view.php";
 	include "tpl/footer.php";
 }
